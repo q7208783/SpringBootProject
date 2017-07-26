@@ -1,0 +1,40 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8" />-->
+    <!--<title>登录页面</title>-->
+<!--</head>-->
+<!--<body>-->
+    <!--<form action="/start/validateLogin" name="loginfrom" accept-charset="utf-8" method="post">-->
+        <!--<label class="label-tips" for="u">账号:</label>-->
+        <!--<input type="text" id="u" name="username" class="inputstyle"/>-->
+        <!--<div>-->
+            <!--<label class="lable-tips" for="password">密码:</label>-->
+            <!--<input type="password" id="password" name="password" class="inputstyle" />-->
+        <!--</div>-->
+        <!--<input type="submit" name="登录"/>-->
+        <!--<a href="/start/register" class="zcxy">注册</a>-->
+    <!--</form>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Security Example </title>
+</head>
+<body>
+<div th:if="${param.error}">
+    Username doesn't exist or Password Incorrect
+</div>
+<div th:if="${param.logout}">
+    ALREADY LOGOUT
+</div>
+<form th:action="@{/login}" method="post">
+    <div><label> Username : <input type="text" name="username"/> </label></div>
+    <div><label> Password : <input type="password" name="password"/> </label></div>
+    <div><input type="submit" value="Login"/></div>
+    <a href="/register" class="zcxy">Register</a>
+</form>
+</body>
+</html>

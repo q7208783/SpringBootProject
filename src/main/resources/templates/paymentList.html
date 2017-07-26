@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Payment List</title>
+    <!--<link rel="stylesheet" th:href="@{/paymentStyle.css}">-->
+</head>
+<body>
+    <h1>Your Payments List</h1>
+    <div th:unless="${#lists.isEmpty(payments)}">
+        <dl th:each="payment : ${payments}">
+            <!--<dt class="paymentsHeadLine">-->
+            Date:  <span th:text="${payment.date}"></span>
+            |Price:    <span th:text="${payment.price}"></span>
+            |Detail:    <span th:text="${payment.detail}"></span>
+            <!--</dt>-->
+        </dl>
+    </div>
+    <div th:if="${#lists.isEmpty(payments)}">
+        <p>You have no Payments in Lists</p>
+    </div>
+
+
+
+    <h1>Add a Payment</h1>
+    <div th:unless="${#lists.isEmpty(user)}">
+        <form th:action="@{/addPayment(id=${user.id})}"  method="post">
+            <label for="price" th:size="20">Price:   </label>
+            <input type="text" name="price" size="50"/><br/>
+            <label for="detail" th:size="20">Detail: </label>
+            <input type="text" name="detail" size="50"/><br/>
+            <label for="category"th:size="20">Category: </label><br/>
+            <label><input type="radio" name="category" value="eat"/>Eat</label><br/>
+            <label><input type="radio" name="category" value="fun"/>Entertainment</label><br/>
+            <label><input type="radio" name="category" value="trans"/>Transportation</label><br/>
+            <label><input type="radio" name="category" value="buy"/>Shop</label><br/>
+            <label><input type="radio" name="category" value="other"/>Other</label><br/>
+            <input type="submit" value="Add Payment"/>
+        </form>
+    </div>
+
+</body>
+</html>
